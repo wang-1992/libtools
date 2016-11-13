@@ -1,0 +1,8 @@
+*.o
+.*.swp
+demo
+*tar
+*tgz
+*gz
+*xz
+*bak*
