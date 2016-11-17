@@ -83,7 +83,7 @@ void *mem_pool_init(uint32_t block_num, uint32_t block_size)
     mem_pool->block_num     = block_num;
     mem_pool->block_size    = block_size;
 
-    mem_pool->free = malloc(block_num * (sizeof(pool_list_t *)));
+    mem_pool->free = malloc(block_num * (sizeof(pool_list_t)));
 
     total_size = mem_pool->block_num * mem_pool->block_size;
 

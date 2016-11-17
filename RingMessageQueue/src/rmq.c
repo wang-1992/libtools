@@ -17,9 +17,16 @@
 #define RMQ_RING_SIZE           (sizeof(rmq_ring_t))
 #define RMQ_MIN(a, b)           ((a > b)?(b):(a))
 
+typedef struct __rmq_node_t__
+{
+    uint32_t    magic;
+}rmq_node_t;
+
 typedef struct __rmq_ring_t__
 {
-    uint8_t *ring;
+    uint8_t     *ring;
+    uint32_t    gate;
+    uint32_t    cnt;
 }rmq_ring_t;
 
 typedef struct __rmq_handle_t__
@@ -34,6 +41,26 @@ typedef struct __rmq_handle_t__
 
 static int _rmq_ring_init(rmq_handle_t *rmq_handle, int qid, uint32_t qlen, uint64_t qsize, int gate)
 {
+    char        *buf;
+    uint64_t    need_size;
+
+    if(rb_create(qlen, sizeof(rmq_node_t *), rmq_handle->ring_use[qid].ring)==0)
+    {
+        return 0;
+    }
+    rmq_handle->ring_use[qid].gate  = gate;
+    rmq_handle->ring_use[qid].cnt   = 0;
+
+    if(rb_create(qlen, sizeof(rmq_node_t *), rmq_handle->ring_free[qid].ring)==0)
+    {
+        return 0;
+    }
+    rmq_handle->ring_free[qid].gate =gate;
+    rmq_handle->ring_free[qid].cnt  = 0;
+    
+    need_size = sizeof(rmq_node_t)+sizeof(rbq_buf_t)+size;
+    buf = malloc();
+
     return  0;
 }
 
