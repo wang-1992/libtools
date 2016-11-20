@@ -22,8 +22,9 @@ typedef struct
 
 typedef struct
 {
-    uint32_t    w_point;
-    uint32_t    r_point;
+    volatile uint32_t    w_point;
+    volatile uint32_t    r_point;
+
     uint32_t    elem_num; 
     uint64_t    elem_size;
     rb_node_t   *rb_node;

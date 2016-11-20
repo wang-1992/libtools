@@ -2,7 +2,7 @@ CC ?= gcc
 
 INC = -I.
 CFLAGS ?= -g -Wall
-LIBS = -L. -lringbuff
+LIBS = -L. -lringbuff -lpthread
 
 SRC = $(wildcard *.c)
 DST = $(patsubst %.c, %.o, $(SRC))
