@@ -112,15 +112,15 @@ int write_log(void *handle, const char *format, ...)
 int main()
 {
     uint32_t jiffie = 1502518683;
-    void *handel;
-    handel = write_log_init("./112234/");
+    void *handle;
+    handle = write_log_init("./112234/");
 
-    write_log_start(handel, jiffie);
-    write_log(handel, "asdasdsadsd:%u.........%s\n", jiffie, "hello1");
-    write_log(handel, "asdasdsadsd:%u.........%s\n", jiffie, "hello2");
-    write_log(handel, "asdasdsadsd:%u.........%s\n", jiffie, "hello3");
-    write_log(handel, "asdasdsadsd:%u.........%s\n", jiffie, "hello4");
-    write_log_end(handel);
+    write_log_start(handle, jiffie);
+    write_log(handle, "asdasdsadsd:%u.........%s\n", jiffie, "hello1");
+    write_log(handle, "asdasdsadsd:%u.........%s\n", jiffie, "hello2");
+    write_log(handle, "asdasdsadsd:%u.........%s\n", jiffie, "hello3");
+    write_log(handle, "asdasdsadsd:%u.........%s\n", jiffie, "hello4");
+    write_log_end(handle);
 
     return 0;
 }
